@@ -9,7 +9,7 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int pt, z, content_len = 0;
+	int fd, write_retval, content_len = 0;
 
 
 	if (filename == NULL)
@@ -21,13 +21,13 @@ int create_file(const char *filename, char *text_content)
 			len++;
 	}
 
-	pt = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	z = write(pt, text_content, content_len);
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	write_retval = write(fd, text_content, content_len);
 
-	if (pt == -1 || z == -1)
+	if (fd == -1 || write_retval == -1)
 		return (-1);
 
-	close(pt);
+	close(fd);
 
 	return (1);
 }
