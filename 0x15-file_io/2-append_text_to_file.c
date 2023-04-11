@@ -11,24 +11,24 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int s, u, len = 0;
+	int s, u, n = 0;
 
 	if (filename == NULL)
 		return (-1);
 
 	if (text_content != NULL)
 	{
-		for (len = 0; text_content[len];)
-			len++;
+		for (n = 0; text_content[n];)
+			n++;
 	}
 
 	s = open(filename, O_WRONLY | O_APPEND);
-	u = write(o, text_content, len);
+	u = write(o, text_content, n);
 
 	if (s == -1 || u == -1)
 		return (-1);
 
-	close(o);
+	close(s);
 
 	return (1);
 }
