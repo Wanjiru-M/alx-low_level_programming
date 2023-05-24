@@ -2,13 +2,13 @@
 
 /**
  * free_dlistint - Frees a doubly linked list
- * @list: Pointer to the list
+ * @head: Pointer to the list
  *
  * Return: void
  */
-void free_dlistint(dlistint_t *list)
+void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *current = list;
+	dlistint_t *current = head;
 	dlistint_t *next;
 
 	while (current != NULL)
