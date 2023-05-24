@@ -10,17 +10,21 @@ size_t print_dlistint(const dlistint_t *h)
 	size_t node_count = 0;
 	const dlistint_t *current_node = h;
 
-	if (h == NULL)
-		return 0;
-
 	while (current_node != NULL)
 	{
 		node_count++;
 
 		if (current_node->next == NULL)
+		{
 			printf("%d\n", current_node->n);
+		}
 		else
-			printf(node_count == 1 ? "%d" : " -> %d", current_node->n);
+		{
+			if (node_count == 1)
+				printf("%d\n", current_node->n);
+			else
+				printf("-> %d\n", current_node->n);
+		}
 
 		current_node = current_node->next;
 	}
