@@ -2,12 +2,12 @@
 
 /**
  * add_dnodeint_end - Adds a new node at the end of a doubly linked list
- * @s: Pointer to the head of the doubly linked list
+ * @head: Pointer to the head of the doubly linked list
  * @n: Value to be added
  *
  * Return: Address of the new node, or NULL if it fails
  */
-dlistint_t *add_dnodeint_end(dlistint_t **s, const int n)
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
 	dlistint_t *newNode = (dlistint_t *)malloc(sizeof(dlistint_t));
 	dlistint_t *current;
@@ -20,14 +20,14 @@ dlistint_t *add_dnodeint_end(dlistint_t **s, const int n)
 	newNode->n = n;
 	newNode->next = NULL;
 
-	if (*s == NULL)
+	if (*head == NULL)
 	{
 		newNode->prev = NULL;
-		*s = newNode;
+		*head = newNode;
 	}
 	else
 	{
-		current = *s;
+		current = *head;
 		while (current->next != NULL)
 		{
 			current = current->next;
