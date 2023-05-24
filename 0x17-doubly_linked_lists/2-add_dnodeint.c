@@ -9,7 +9,6 @@
 size_t dlistint_len(const dlistint_t *head)
 {
 	size_t element_count = 0;
-	const dlistint_t *current = head;
 
 	while (current != NULL)
 	{
@@ -19,4 +18,3 @@ size_t dlistint_len(const dlistint_t *head)
 
 	return element_count;
 }
-
