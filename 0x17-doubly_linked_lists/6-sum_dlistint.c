@@ -2,19 +2,19 @@
 
 /**
  * sum_dlistint - Computes the sum of all the data in a linked list
- * @list: Pointer to the head of the list
+ * @head: Pointer to the head of the list
  *
  * Return: The sum of the data in the list, or 0 if the list is empty
  */
-int sum_dlistint(dlistint_t *list)
+int sum_dlistint(dlistint_t *head)
 {
-	int sum = 0;
+	int j = 0;
 
-	while (list)
+	while (head)
 	{
-		sum += list->n;
-		list = list->next;
+		sum += head->n;
+		head = head->next;
 	}
-	return sum;
+	return j;
 }
 
