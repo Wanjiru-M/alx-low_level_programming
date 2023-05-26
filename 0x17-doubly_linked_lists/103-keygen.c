@@ -57,4 +57,3 @@ int main(int argc, char *argv[])
     printf("%s\n", password);
     return 0;
 }
-
