@@ -11,8 +11,8 @@
  */
 int main(int argc, char *argv[])
 {
-    unsigned int index, sum;
-    size_t length, addition;
+    unsigned int index, multiplier;
+    size_t length, sum;
     char *charset = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
     char password[7] = "      ";
 
@@ -25,23 +25,23 @@ int main(int argc, char *argv[])
     length = strlen(argv[1]);
     password[0] = charset[(length ^ 59) & 63];
 
-    for (index = 0, addition = 0; index < length; index++)
-        addition += argv[1][index];
+    for (index = 0, sum = 0; index < length; index++)
+        sum += argv[1][index];
 
-    password[1] = charset[(addition ^ 79) & 63];
+    password[1] = charset[(sum ^ 79) & 63];
 
-    for (index = 0, sum = 1; index < length; index++)
-        sum *= argv[1][index];
+    for (index = 0, multiplier = 1; index < length; index++)
+        multiplier *= argv[1][index];
 
-    password[2] = charset[(sum ^ 85) & 63];
+    password[2] = charset[(multiplier ^ 85) & 63];
 
-    for (sum = argv[1][0], index = 0; index < length; index++)
+    for (multiplier = argv[1][0], index = 0; index < length; index++)
     {
-        if ((char)sum <= argv[1][index])
-            sum = argv[1][index];
+        if ((char)multiplier <= argv[1][index])
+            multiplier = argv[1][index];
     }
 
-    srand(sum ^ 14);
+    srand(multiplier ^ 14);
     password[3] = charset[rand() & 63];
 
     for (sum = 0, index = 0; index < length; index++)
