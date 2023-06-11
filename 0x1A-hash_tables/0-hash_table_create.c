@@ -8,7 +8,7 @@
  *
  * This function creates a new hash table with a given size.
  *
- * Return: A pointer to the newly created hash table, or NULL if an error occurs.
+ * Return: pointer to hash table, or NULL if an error occurs
  */
 hash_table_t *hash_table_create(unsigned long int size)
 {
