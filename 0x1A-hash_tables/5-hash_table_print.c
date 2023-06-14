@@ -7,31 +7,31 @@
  */
 void print_recursive(hash_node_t *node, int *flag)
 {
-    if (node == NULL)
-        return;
+	if (node == NULL)
+	return;
 
-    print_recursive(node->next, flag);
+	print_recursive(node->next, flag);
 
-    if (*flag == 1)
-        printf(", ");
-    printf("'%s': '%s'", node->key, node->value);
-    *flag = 1;
+	if (*flag == 1)
+	printf(", ");
+	printf("'%s': '%s'", node->key, node->value);
+	*flag = 1;
 }
 
 void hash_table_print(const hash_table_t *ht)
 {
-    unsigned long int i;
-    hash_node_t *node;
-    int flag = 0;
+	unsigned long int i;
+	hash_node_t *node;
+	int flag = 0;
 
-    if (ht == NULL)
-        return;
+	if (ht == NULL)
+	return;
 
-    printf("{");
-    for (i = 0; i < ht->size; i++)
-    {
-        node = ht->array[i];
-        print_recursive(node, &flag);
-    }
-    printf("}\n");
+	printf("{");
+ 	for (i = 0; i < ht->size; i++)
+	{
+	node = ht->array[i];
+	print_recursive(node, &flag);
+	}
+	printf("}\n");
 }
