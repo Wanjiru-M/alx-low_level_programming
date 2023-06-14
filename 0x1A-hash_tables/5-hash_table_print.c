@@ -5,28 +5,33 @@
  * @ht: The hash table to print.
  * Prints the value pairs.
  */
+void print_recursive(hash_node_t *node, int *flag)
+{
+    if (node == NULL)
+        return;
+
+    print_recursive(node->next, flag);
+
+    if (*flag == 1)
+        printf(", ");
+    printf("'%s': '%s'", node->key, node->value);
+    *flag = 1;
+}
+
 void hash_table_print(const hash_table_t *ht)
 {
-	hash_node_t *node = NULL;
-	char *separator = "";
-	unsigned long int index;
+    unsigned long int i;
+    hash_node_t *node;
+    int flag = 0;
 
-	if (ht != NULL)
-	{
-		printf("{");
-		for (index = 0; index < ht->size; index++)
-		{
-			node = ht->array[index];
-			while (node != NULL)
-			{
-				printf("%s", separator);
-				separator = ", ";
+    if (ht == NULL)
+        return;
 
-				if (node->key != NULL)
-					printf("'%s': '%s'", node->key, node->value);
-				node = node->next;
-			}
-		}
-		printf("}\n");
-	}
+    printf("{");
+    for (i = 0; i < ht->size; i++)
+    {
+        node = ht->array[i];
+        print_recursive(node, &flag);
+    }
+    printf("}\n");
 }
